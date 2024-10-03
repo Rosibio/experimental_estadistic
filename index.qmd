@@ -15,7 +15,7 @@ When you click the **Render** button a document will be generated that includes 
 1 + 1
 ```
 
-You can add options to executable code like this 
+You can add options to executable code like this
 
 ```{r}
 #| echo: false
@@ -23,3 +23,94 @@ You can add options to executable code like this
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
+
+# Diseños experimentales (1)
+## Diseño Completamente al Azar  (1.1)
+
+
+Dosis de fertilización nitrogenada 
+- 0
+- 50
+- 100
+- 150 
+
+Rep: 5 
+
+```{r}
+library(agricolae)
+tratamientos <- c(0, 50, 100, 150)
+repeticiones <- 5
+diseño_DCA <- design.crd(tratamientos, repeticiones, serie=1, seed=123)
+print(diseño_DCA)
+diseño_DCA$book
+```
+
+#adicoonar factor 2
+# variedades de papa: CHan chan y peruanita
+
+
+```{r}
+#DISEO EN DCA
+
+library(agricolae)
+
+tratamientos <- c(0, 50, 100, 150)
+repeticiones <- 5
+
+# Crear el diseño completamente aleatorizado (DCA)
+diseño_DCA <- design.crd(tratamientos, repeticiones, serie=1, seed=123)
+
+# Mostrar el diseño del experimento
+print(diseño_DCA)
+
+# Mostrar los datos en formato de tabla
+diseño_DCA$book
+
+
+
+
+#primero identificar la función, ahora le pedire a R que #busque la descripción de un paquete. 
+
+#factorial 4 niveles y 2 variedades 
+tratamientos<-c(4,2)
+
+#serie 1 por defecto
+outdesign <-design.ab(tratamientos, r=5, serie=1)
+
+book<-outdesign$book
+
+
+#pARA FACTORIAL
+# Cargar el paquete agricolae
+library(agricolae)
+
+# Definir los niveles de los factores
+fertilizacion <- c(0, 50, 100, 150)  # 4 dosis de fertilización
+variedades <- c("Peruanita", "Chan Chan")  # 2 variedades de papa
+
+dosis<-c(0, 50, 100, 150)
+variedad <- c("canchan", "peruanita")
+
+trt<-c(4,2)   #fACTORIAL DE 4X2
+outdesign <- design.ab(trt=trt, r=5, serie=1)
+book <- outdesign$book
+book
+
+
+
+#OBSERVAMOS ESTRUDTURA DE OUTDESIGN 
+str(outdesign)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+

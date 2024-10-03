@@ -109,4 +109,24 @@ On branch master
 nothing to commit, working tree clean
 
 rosit@SITABETH MINGW64 /r/R_Sudio2024-27/Estadistica_Experimental (master)
-$
+$rosit@SITABETH MINGW64 /r/R_Sudio2024-27/Estadistica_Experimental (master)
+$ git branch -M main
+
+rosit@SITABETH MINGW64 /r/R_Sudio2024-27/Estadistica_Experimental (main)
+$ git remote add origin https://github.com/Rosibio/experimental_estadistic.git
+
+rosit@SITABETH MINGW64 /r/R_Sudio2024-27/Estadistica_Experimental (main)
+$ git push -u origin main
+info: please complete authentication in your browser...
+Enumerating objects: 31, done.
+Counting objects: 100% (31/31), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (25/25), done.
+Writing objects: 100% (31/31), 41.68 KiB | 5.95 MiB/s, done.
+Total 31 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), done.
+To https://github.com/Rosibio/experimental_estadistic.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+rosit@SITABETH MINGW64 /r/R_Sudio2024-27/Estadistica_Experimental (main)
