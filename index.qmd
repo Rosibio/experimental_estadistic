@@ -7,28 +7,27 @@ format: html
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-# Estadística Experimental 
+# ------ CLASE 04 -------
+
+# Estadística Experimental
 
 ## Doctorado CIPDES - UNTRM
 
-# Diseños experimentales 
-Los Diseños experimentales son tipos de arreglos del experimento a realizar en el que se define la disposición de las repeticiones y control locam cuidando la aleatorización y buscando reducir el error experimental. 
+# Diseños experimentales
+
+Los Diseños experimentales son tipos de arreglos del experimento a realizar en el que se define la disposición de las repeticiones y control locam cuidando la aleatorización y buscando reducir el error experimental.
 
 ## Diseño Completamente al Azar (DCA)
 
-Los tratamientos se asignan de manera totalmente aleatoria a las unidades experimentales las cuales son homogeneas. 
+Los tratamientos se asignan de manera totalmente aleatoria a las unidades experimentales las cuales son homogeneas.
 
-### Analizamos el siguiente ejemplo: 
+### Analizamos el siguiente ejemplo:
 
 El objetivo es: elaborar un DCA que consista de 4 tratamientos = los cuales se refieren a:
 
-Dosis de aplicación de fertilización nitrogenada 
-- 0
-- 50
-- 100
-- 150 
+Dosis de aplicación de fertilización nitrogenada - 0 - 50 - 100 - 150
 
-Número de repeticiones: 5 
+Número de repeticiones: 5
 
 ```{r}
 #Se activa de la librería el paquete "agricolae", se definen los tratamientos, repeticiones y finalmente se aplica el diseño empleando design.crd: 
@@ -44,21 +43,15 @@ diseño_DCA$book
 
 Cuando hablamos de diseños factoriales, nos referimos a aquellos en los que se estudian simultáneamente dos o más factores (variables independientes), y se analizan todas las posibles combinaciones de sus niveles.
 
-## Analizamos el siguiente ejemplo: 
+## Analizamos el siguiente ejemplo:
 
 Se trabajará con un diseño factorial de 2 factores, estos son:
 
-1.- Dosis de aplicación de fertilización nitrogenada: 
-- 0
-- 50
-- 100
-- 150 
+1.- Dosis de aplicación de fertilización nitrogenada: - 0 - 50 - 100 - 150
 
-2.- Variedades de papa:
-- Canchan
-- peruanita
+2.- Variedades de papa: - Canchan - peruanita
 
-Número de repeticiones: 5 
+Número de repeticiones: 5
 
 ```{r}
 #Ya no es necesario activar el paquete agricolae, porque se realizó en el paso anterior. Además, tampoco es necesario crear elementos que contengan las especificaciones de los factores ya que el paquete no permite la asignación de los mismos, solo se debe de identificar los niveles por cada factor, como se muestra a continuación:  
@@ -72,7 +65,7 @@ book <- outdesign$book
 book
 ```
 
-## OBSERVAMOS ESTRUCTURA DE OUTDESIGN 
+## OBSERVAMOS ESTRUCTURA DE OUTDESIGN
 
 ```{r}
 #Para  entender la dirección que se colocó en el ejemplo anterior, se utiliza str: 
@@ -80,13 +73,119 @@ book
 str(outdesign)
 ```
 
-Finish :) 
+# ------ CLASE 05 -------
+
+#Análisis de Datos: ##Importar base de datos para analizar área foliar (lfa)
+
+```{r}
+library(readxl)
+LA_MOLINA_2014_POTATO_WUE_FBok_ <- read_excel("LA MOLINA 2014 POTATO WUE (FBok).xlsx", 
+    sheet = "fb")
+View(LA_MOLINA_2014_POTATO_WUE_FBok_)
+
+#Se cambia el nombre del archivo por uno más corto = fb
+
+fb <- read_excel("LA MOLINA 2014 POTATO WUE (FBok).xlsx", 
+    sheet = "fb")
+View(fb)
+
+#Observamos estructura de los datos
+str(fb)
+
+```
+
+##Elección del Modelo Estadistico En este caso se trabajará con modelo aov para el área foloiar (alf)
+
+```{r}
+modelo <- aov(formula = lfa ~ riego + geno + riego*geno + block, data = fb)
+
+#Análisis de variaza
+anova(modelo)
 
 
-                                                         By Rosita Castillo.
+```
+
+Para corregir el error utilizamos la columna bloque (que se encuentra en chr = caracter)
+
+```{r}
+modelo2 <- aov(formula = lfa ~ riego + geno + riego*geno + bloque, data = fb)
+
+#Análisis de variaza
+anova(modelo2)
+
+```
+
+Como se observa, el análisis ANOVA es correcto, los grados de libertad de bloque son 4 (5-1).
+
+Ahora se puede continuar
+
+##Diagnostico del modelo (Se puede realizar antes del anova)
+
+```{r}
+plot(modelo2)
+
+```
+
+En el gráfico: Residual vs Fitted observamos 3 datos que se deberían eliminar estos corresponden a 65, 41 y 129
+
+El grafico QQ: Residuals corresponde al de normalidad.
+
+##Comparación de medias utilizamos el paquete agricolae
+
+```{r}
+library(agricolae)
+
+#Se realiza la busqueda de la función del paquete que se utilizará (::)
+#Se analizarpa los fatores de riego y genotipo
+
+mc <- agricolae::duncan.test(y = modelo2, trt = c("riego", "geno"))
+
+#Para observar resultados se corre mc (mi comparación)
+mc
+
+```
+
+```{r}
+#verificamos la estructura de mc
+str(mc)
+
+```
+
+se debe transformar la información ya que hay una incongruencia en este paquete agricolae hay una separacion entre los datos de las medias y de las comparaciones, además presenta los datos combinados.
+
+Se peude optar popr el paquete emmens (EMMs) aunque no permite obtener las letras de comparacion. habría que utilizar un paquete adicional.
+
+```{r}
+
+library(emmeans)
+library(multcomp)
+library(tidyverse)
+
+mc<- emmeans(modelo2, ~ riego | geno) %>% 
+  cld(Letters = letters, reversed = T)
+
+mc
+
+```
+
+```{r}
+#Trabajando con el paquete inti: 
+
+library(inti)
+plot_smr(data = mc
+         , type = "bar"
+         , x = "geno"
+         , y = "emmean"
+         , group = "riego"
+         , sig = ".group"
+         , error = "SE"
+         , ylimits = c(0, 12000, 2000)
+)
+```
 
 
+Finish :)
 
-
-
-
+        
+                                                     By Rosita Castillo.
+```
