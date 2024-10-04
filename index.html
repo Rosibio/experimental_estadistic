@@ -100,83 +100,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
 <p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>You can add options to executable code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<section id="estadística-experimental" class="level1">
+<h1>Estadística Experimental</h1>
+<section id="doctorado-cipdes---untrm" class="level2">
+<h2 class="anchored" data-anchor-id="doctorado-cipdes---untrm">Doctorado CIPDES - UNTRM</h2>
 </section>
-<section id="diseños-experimentales-1" class="level1">
-<h1>Diseños experimentales (1)</h1>
-<section id="diseño-completamente-al-azar-1.1" class="level2">
-<h2 class="anchored" data-anchor-id="diseño-completamente-al-azar-1.1">Diseño Completamente al Azar (1.1)</h2>
-<p>Dosis de fertilización nitrogenada - 0 - 50 - 100 - 150</p>
-<p>Rep: 5</p>
+</section>
+<section id="diseños-experimentales" class="level1">
+<h1>Diseños experimentales</h1>
+<p>Los Diseños experimentales son tipos de arreglos del experimento a realizar en el que se define la disposición de las repeticiones y control locam cuidando la aleatorización y buscando reducir el error experimental.</p>
+<section id="diseño-completamente-al-azar-dca" class="level2">
+<h2 class="anchored" data-anchor-id="diseño-completamente-al-azar-dca">Diseño Completamente al Azar (DCA)</h2>
+<p>Los tratamientos se asignan de manera totalmente aleatoria a las unidades experimentales las cuales son homogeneas.</p>
+<section id="analizamos-el-siguiente-ejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="analizamos-el-siguiente-ejemplo">Analizamos el siguiente ejemplo:</h3>
+<p>El objetivo es: elaborar un DCA que consista de 4 tratamientos = los cuales se refieren a:</p>
+<p>Dosis de aplicación de fertilización nitrogenada - 0 - 50 - 100 - 150</p>
+<p>Número de repeticiones: 5</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tratamientos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>repeticiones <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>diseño_DCA <span class="ot">&lt;-</span> <span class="fu">design.crd</span>(tratamientos, repeticiones, <span class="at">serie=</span><span class="dv">1</span>, <span class="at">seed=</span><span class="dv">123</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(diseño_DCA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$parameters
-$parameters$design
-[1] "crd"
-
-$parameters$trt
-[1]   0  50 100 150
-
-$parameters$r
-[1] 5 5 5 5
-
-$parameters$serie
-[1] 1
-
-$parameters$seed
-[1] 123
-
-$parameters$kinds
-[1] "Super-Duper"
-
-$parameters[[7]]
-[1] TRUE
-
-
-$book
-   plots r tratamientos
-1     11 1           50
-2     12 1            0
-3     13 2            0
-4     14 2           50
-5     15 3            0
-6     16 4            0
-7     17 1          150
-8     18 1          100
-9     19 3           50
-10    20 2          100
-11    21 3          100
-12    22 4           50
-13    23 4          100
-14    24 2          150
-15    25 3          150
-16    26 5          100
-17    27 4          150
-18    28 5           50
-19    29 5            0
-20    30 5          150</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>diseño_DCA<span class="sc">$</span>book</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Se activa de la librería el paquete "agricolae", se definen los tratamientos, repeticiones y finalmente se aplica el diseño empleando design.crd: </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>tratamientos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>repeticiones <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>diseño_DCA <span class="ot">&lt;-</span> <span class="fu">design.crd</span>(tratamientos, repeticiones, <span class="at">serie=</span><span class="dv">1</span>, <span class="at">seed=</span><span class="dv">123</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>diseño_DCA<span class="sc">$</span>book</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plots r tratamientos
 1     11 1           50
@@ -201,181 +149,99 @@ $book
 20    30 5          150</code></pre>
 </div>
 </div>
-<p>#adicoonar factor 2 # variedades de papa: CHan chan y peruanita</p>
+</section>
+</section>
+<section id="diseño-factorial-para-dca" class="level2">
+<h2 class="anchored" data-anchor-id="diseño-factorial-para-dca">Diseño Factorial para DCA</h2>
+<p>Cuando hablamos de diseños factoriales, nos referimos a aquellos en los que se estudian simultáneamente dos o más factores (variables independientes), y se analizan todas las posibles combinaciones de sus niveles.</p>
+</section>
+<section id="analizamos-el-siguiente-ejemplo-1" class="level2">
+<h2 class="anchored" data-anchor-id="analizamos-el-siguiente-ejemplo-1">Analizamos el siguiente ejemplo:</h2>
+<p>Se trabajará con un diseño factorial de 2 factores, estos son:</p>
+<p>1.- Dosis de aplicación de fertilización nitrogenada: - 0 - 50 - 100 - 150</p>
+<p>2.- Variedades de papa: - Canchan - peruanita</p>
+<p>Número de repeticiones: 5</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#DISEO EN DCA</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>tratamientos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>repeticiones <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el diseño completamente aleatorizado (DCA)</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>diseño_DCA <span class="ot">&lt;-</span> <span class="fu">design.crd</span>(tratamientos, repeticiones, <span class="at">serie=</span><span class="dv">1</span>, <span class="at">seed=</span><span class="dv">123</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar el diseño del experimento</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(diseño_DCA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$parameters
-$parameters$design
-[1] "crd"
-
-$parameters$trt
-[1]   0  50 100 150
-
-$parameters$r
-[1] 5 5 5 5
-
-$parameters$serie
-[1] 1
-
-$parameters$seed
-[1] 123
-
-$parameters$kinds
-[1] "Super-Duper"
-
-$parameters[[7]]
-[1] TRUE
-
-
-$book
-   plots r tratamientos
-1     11 1           50
-2     12 1            0
-3     13 2            0
-4     14 2           50
-5     15 3            0
-6     16 4            0
-7     17 1          150
-8     18 1          100
-9     19 3           50
-10    20 2          100
-11    21 3          100
-12    22 4           50
-13    23 4          100
-14    24 2          150
-15    25 3          150
-16    26 5          100
-17    27 4          150
-18    28 5           50
-19    29 5            0
-20    30 5          150</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar los datos en formato de tabla</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>diseño_DCA<span class="sc">$</span>book</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   plots r tratamientos
-1     11 1           50
-2     12 1            0
-3     13 2            0
-4     14 2           50
-5     15 3            0
-6     16 4            0
-7     17 1          150
-8     18 1          100
-9     19 3           50
-10    20 2          100
-11    21 3          100
-12    22 4           50
-13    23 4          100
-14    24 2          150
-15    25 3          150
-16    26 5          100
-17    27 4          150
-18    28 5           50
-19    29 5            0
-20    30 5          150</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#primero identificar la función, ahora le pedire a R que #busque la descripción de un paquete. </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#factorial 4 niveles y 2 variedades </span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>tratamientos<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#serie 1 por defecto</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>outdesign <span class="ot">&lt;-</span><span class="fu">design.ab</span>(tratamientos, <span class="at">r=</span><span class="dv">5</span>, <span class="at">serie=</span><span class="dv">1</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>book<span class="ot">&lt;-</span>outdesign<span class="sc">$</span>book</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#pARA FACTORIAL</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar el paquete agricolae</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir los niveles de los factores</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>fertilizacion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>)  <span class="co"># 4 dosis de fertilización</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>variedades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Peruanita"</span>, <span class="st">"Chan Chan"</span>)  <span class="co"># 2 variedades de papa</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>dosis<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>)</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>variedad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"canchan"</span>, <span class="st">"peruanita"</span>)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>trt<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>)   <span class="co">#fACTORIAL DE 4X2</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>outdesign <span class="ot">&lt;-</span> <span class="fu">design.ab</span>(<span class="at">trt=</span>trt, <span class="at">r=</span><span class="dv">5</span>, <span class="at">serie=</span><span class="dv">1</span>)</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>book <span class="ot">&lt;-</span> outdesign<span class="sc">$</span>book</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>book</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Ya no es necesario activar el paquete agricolae, porque se realizó en el paso anterior. Además, tampoco es necesario crear elementos que contengan las especificaciones de los factores ya que el paquete no permite la asignación de los mismos, solo se debe de identificar los niveles por cada factor, como se muestra a continuación:  </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>trt<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Finalmente, elaboramos el código del diseño que debe contener como datos relevantes y obligatorios los tratamientos y número de repeticiones. Sin olvidar la dirección del archivo a utilizar (outdesign$book)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>outdesign <span class="ot">&lt;-</span> <span class="fu">design.ab</span>(<span class="at">trt=</span>trt, <span class="at">r=</span><span class="dv">5</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>book <span class="ot">&lt;-</span> outdesign<span class="sc">$</span>book</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>book</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   plots block A B
-1     11     1 3 2
-2     12     1 1 1
-3     13     1 3 1
-4     14     1 1 2
-5     15     1 4 2
-6     16     1 4 1
-7     17     1 2 2
-8     18     1 2 1
-9     19     2 2 2
-10    20     2 4 2
-11    21     2 1 1
-12    22     2 1 2
-13    23     2 4 1
-14    24     2 2 1
-15    25     2 3 2
-16    26     2 3 1
-17    27     3 4 1
-18    28     3 3 2
-19    29     3 4 2
-20    30     3 2 1
-21    31     3 3 1
-22    32     3 1 1
-23    33     3 1 2
-24    34     3 2 2
-25    35     4 4 2
-26    36     4 1 1
-27    37     4 3 2
-28    38     4 2 1
-29    39     4 2 2
-30    40     4 1 2
-31    41     4 4 1
-32    42     4 3 1
-33    43     5 3 1
-34    44     5 4 1
-35    45     5 4 2
-36    46     5 1 2
-37    47     5 2 1
-38    48     5 1 1
-39    49     5 2 2
-40    50     5 3 2</code></pre>
+1    101     1 4 1
+2    102     1 1 1
+3    103     1 1 2
+4    104     1 4 2
+5    105     1 3 1
+6    106     1 2 1
+7    107     1 2 2
+8    108     1 3 2
+9    109     2 1 1
+10   110     2 1 2
+11   111     2 2 1
+12   112     2 2 2
+13   113     2 3 2
+14   114     2 3 1
+15   115     2 4 1
+16   116     2 4 2
+17   117     3 4 2
+18   118     3 1 1
+19   119     3 3 1
+20   120     3 3 2
+21   121     3 2 2
+22   122     3 1 2
+23   123     3 2 1
+24   124     3 4 1
+25   125     4 3 1
+26   126     4 1 1
+27   127     4 4 2
+28   128     4 2 1
+29   129     4 2 2
+30   130     4 3 2
+31   131     4 4 1
+32   132     4 1 2
+33   133     5 3 2
+34   134     5 2 1
+35   135     5 2 2
+36   136     5 1 2
+37   137     5 4 2
+38   138     5 4 1
+39   139     5 1 1
+40   140     5 3 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#OBSERVAMOS ESTRUDTURA DE OUTDESIGN </span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(outdesign)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="observamos-estructura-de-outdesign" class="level2">
+<h2 class="anchored" data-anchor-id="observamos-estructura-de-outdesign">OBSERVAMOS ESTRUCTURA DE OUTDESIGN</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Para  entender la dirección que se colocó en el ejemplo anterior, se utiliza str: </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(outdesign)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 2
  $ parameters:List of 8
   ..$ design : chr "factorial"
   ..$ trt    : chr [1:8] "1 1" "1 2" "2 1" "2 2" ...
   ..$ r      : num 5
-  ..$ serie  : num 1
-  ..$ seed   : int -1916170745
+  ..$ serie  : num 2
+  ..$ seed   : int -698361477
   ..$ kinds  : chr "Super-Duper"
   ..$        : logi TRUE
   ..$ applied: chr "rcbd"
  $ book      :'data.frame': 40 obs. of  4 variables:
-  ..$ plots: num [1:40] 11 12 13 14 15 16 17 18 19 20 ...
+  ..$ plots: num [1:40] 101 102 103 104 105 106 107 108 109 110 ...
   ..$ block: Factor w/ 5 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 2 2 ...
-  ..$ A    : chr [1:40] "3" "1" "3" "1" ...
-  ..$ B    : chr [1:40] "2" "1" "1" "2" ...</code></pre>
+  ..$ A    : chr [1:40] "4" "1" "1" "4" ...
+  ..$ B    : chr [1:40] "1" "1" "2" "2" ...</code></pre>
 </div>
 </div>
+<p>Finish :)</p>
+<pre><code>                                                     By Rosita Castillo.</code></pre>
 </section>
 </section>
 

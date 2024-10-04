@@ -7,107 +7,83 @@ format: html
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-## Running Code
+# Estadística Experimental 
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+## Doctorado CIPDES - UNTRM
 
-```{r}
-1 + 1
-```
+# Diseños experimentales 
+Los Diseños experimentales son tipos de arreglos del experimento a realizar en el que se define la disposición de las repeticiones y control locam cuidando la aleatorización y buscando reducir el error experimental. 
 
-You can add options to executable code like this
+## Diseño Completamente al Azar (DCA)
 
-```{r}
-#| echo: false
-2 * 2
-```
+Los tratamientos se asignan de manera totalmente aleatoria a las unidades experimentales las cuales son homogeneas. 
 
-The `echo: false` option disables the printing of code (only output is displayed).
+### Analizamos el siguiente ejemplo: 
 
-# Diseños experimentales (1)
-## Diseño Completamente al Azar  (1.1)
+El objetivo es: elaborar un DCA que consista de 4 tratamientos = los cuales se refieren a:
 
-
-Dosis de fertilización nitrogenada 
+Dosis de aplicación de fertilización nitrogenada 
 - 0
 - 50
 - 100
 - 150 
 
-Rep: 5 
+Número de repeticiones: 5 
 
 ```{r}
+#Se activa de la librería el paquete "agricolae", se definen los tratamientos, repeticiones y finalmente se aplica el diseño empleando design.crd: 
+
 library(agricolae)
 tratamientos <- c(0, 50, 100, 150)
 repeticiones <- 5
 diseño_DCA <- design.crd(tratamientos, repeticiones, serie=1, seed=123)
-print(diseño_DCA)
 diseño_DCA$book
 ```
 
-#adicoonar factor 2
-# variedades de papa: CHan chan y peruanita
+## Diseño Factorial para DCA
 
+Cuando hablamos de diseños factoriales, nos referimos a aquellos en los que se estudian simultáneamente dos o más factores (variables independientes), y se analizan todas las posibles combinaciones de sus niveles.
+
+## Analizamos el siguiente ejemplo: 
+
+Se trabajará con un diseño factorial de 2 factores, estos son:
+
+1.- Dosis de aplicación de fertilización nitrogenada: 
+- 0
+- 50
+- 100
+- 150 
+
+2.- Variedades de papa:
+- Canchan
+- peruanita
+
+Número de repeticiones: 5 
 
 ```{r}
-#DISEO EN DCA
+#Ya no es necesario activar el paquete agricolae, porque se realizó en el paso anterior. Además, tampoco es necesario crear elementos que contengan las especificaciones de los factores ya que el paquete no permite la asignación de los mismos, solo se debe de identificar los niveles por cada factor, como se muestra a continuación:  
 
-library(agricolae)
+trt<-c(4,2)
 
-tratamientos <- c(0, 50, 100, 150)
-repeticiones <- 5
+#Finalmente, elaboramos el código del diseño que debe contener como datos relevantes y obligatorios los tratamientos y número de repeticiones. Sin olvidar la dirección del archivo a utilizar (outdesign$book)
 
-# Crear el diseño completamente aleatorizado (DCA)
-diseño_DCA <- design.crd(tratamientos, repeticiones, serie=1, seed=123)
-
-# Mostrar el diseño del experimento
-print(diseño_DCA)
-
-# Mostrar los datos en formato de tabla
-diseño_DCA$book
-
-
-
-
-#primero identificar la función, ahora le pedire a R que #busque la descripción de un paquete. 
-
-#factorial 4 niveles y 2 variedades 
-tratamientos<-c(4,2)
-
-#serie 1 por defecto
-outdesign <-design.ab(tratamientos, r=5, serie=1)
-
-book<-outdesign$book
-
-
-#pARA FACTORIAL
-# Cargar el paquete agricolae
-library(agricolae)
-
-# Definir los niveles de los factores
-fertilizacion <- c(0, 50, 100, 150)  # 4 dosis de fertilización
-variedades <- c("Peruanita", "Chan Chan")  # 2 variedades de papa
-
-dosis<-c(0, 50, 100, 150)
-variedad <- c("canchan", "peruanita")
-
-trt<-c(4,2)   #fACTORIAL DE 4X2
-outdesign <- design.ab(trt=trt, r=5, serie=1)
+outdesign <- design.ab(trt=trt, r=5)
 book <- outdesign$book
 book
-
-
-
-#OBSERVAMOS ESTRUDTURA DE OUTDESIGN 
-str(outdesign)
-
-
 ```
 
+## OBSERVAMOS ESTRUCTURA DE OUTDESIGN 
+
+```{r}
+#Para  entender la dirección que se colocó en el ejemplo anterior, se utiliza str: 
+
+str(outdesign)
+```
+
+Finish :) 
 
 
-
-
+                                                         By Rosita Castillo.
 
 
 
